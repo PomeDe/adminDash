@@ -1,103 +1,76 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const products = [
+    { id: 1, name: "T-shirt", category: "Men's Clothes", price: "10$", stock: 67, status: "Active", image: "https://colorfulstandard.com/cdn/shop/files/CS2056_Male_OversizedOrganicT-Shirt-DeepBlack_2_2adc696d-0930-4a7f-86b1-61ad0c6dc3e9.jpg?v=1745834597&width=600" },
+    { id: 2, name: "Leggings", category: "Women's Clothes", price: "12$", stock: 45, status: "Scheduled", image: "https://www.yogishop.com/cdn/shop/files/9128_yoga_leggings_high_waist_front_black_web2500.jpg?v=1715224540&width=900" },
+    { id: 3, name: "Backpack", category: "Kid's Clothes", price: "10$", stock: 67, status: "Active", image: "https://m.media-amazon.com/images/I/91Sjo4oF85L._AC_SX569_.jpg" },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const badge = {
+    Active: "bg-[#E4F3EB] text-[#208B59] border border-[#CFE8DB]",
+    Scheduled: "bg-[#FDEAEA] text-[#D9534F] border border-[#F2C1C0]",
+    Draft: "bg-[#FFF6D9] text-[#8A6D3B] border border-[#FFE7A3]",
+  };
+
+  return (
+    <div className="bg-[#E5E5E5] flex flex-row w-screen h-screen text-black">
+
+
+      <div className="w-60 bg-white border-r p-4 flex flex-col">
+        <h1 className="text-xl font-bold mb-6">Company</h1>
+        <nav className="space-y-3 flex flex-col">
+          <a href="#" className="text-gray-600 hover:text-black">Dashboard</a>
+          <a href="/" className="text-black font-semibold">Products</a>
+          <a href="#" className="text-gray-600 hover:text-black">Sales</a>
+          <a href="#" className="text-gray-600 hover:text-black">Customers</a>
+          <a href="/analytics" className="text-gray-600 hover:text-black">Analytics</a>
+          <a href="#" className="text-gray-600 hover:text-black">Notifications</a>
+          <a href="#" className="text-gray-600 hover:text-black">Settings</a>
+        </nav>
+      </div>
+
+
+ <div className="flex-1 p-6 overflow-y-auto">
+
+        <h2 className="text-2xl font-bold mb-6">Products</h2>
+
+
+        <div className="flex flex-col bg-white w-full h-11/12 rounded-3xl p-6 overflow-y-auto">
+
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold">Products List</h3>
+            <div className="flex flex-row justify-between items-center space-x-6 ml-auto">
+              <button className="w-20 h-10 rounded-lg border">Filter</button>
+              <button className="w-20 h-10 rounded-lg border">See All</button>
+              <button className="w-20 h-10 rounded-lg bg-black text-white">+ Add</button>
+            </div>
+
+          </div>
+
+          <div className="flex flex-row font-semibold border-b py-2 text-gray-600  justify-between">
+            <span>Product Name</span>
+            <span>Category</span>
+            <span>Price</span>
+            <span>Stock</span>
+            <span>Status</span>
+            <span>Action</span>
+          </div>
+
+          {products.map(p => (
+            <div key={p.id} className="inline-flex
+   flex-row items-center py-3 border-b  justify-between">
+              <div className="flex items-center gap-2">
+                <img src={p.image} className="w-12 h-12" />
+                <span>{p.name}</span>
+              </div>
+              <span>{p.category}</span>
+              <span>{p.price}</span>
+              <span>{p.stock}</span>
+              <span className={`px-2 py-1 text-sm rounded ${badge[p.status]}`}>{p.status}</span>
+              <button className="text-blue-600">Delete</button>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
