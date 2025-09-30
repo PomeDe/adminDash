@@ -24,30 +24,30 @@ export default function Analytics() {
           <div className="bg-white p-4 rounded shadow">
             <div className="flex justify-between items-center mb-2">
               <p className="text-gray-600">Sales</p>
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">📈</div>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"></div>
             </div>
             <h3 className="text-2xl font-bold text-[#208B59]">67343</h3>
-            <p className="text-sm text-[#208B59]">⬆ 5.674% <span className="text-gray-600">since last month</span></p>
+            <p className="text-sm text-[#208B59]">+5.674% <span className="text-gray-600">since last month</span></p>
           </div>
 
 
           <div className="bg-white p-4 rounded shadow">
             <div className="flex justify-between items-center mb-2">
               <p className="text-gray-600">Purchases</p>
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">🛒</div>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"></div>
             </div>
             <h3 className="text-2xl font-bold text-[#208B59]">2343</h3>
-            <p className="text-sm text-[#D9534F]">⬇ 5.64% <span className="text-gray-600">since last month</span></p>
+            <p className="text-sm text-[#D9534F]">-5.64% <span className="text-gray-600">since last month</span></p>
           </div>
 
 
           <div className="bg-white p-4 rounded shadow">
             <div className="flex justify-between items-center mb-2">
               <p className="text-gray-600">Orders</p>
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">📦</div>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center"></div>
             </div>
             <h3 className="text-2xl font-bold text-[#208B59]">35343</h3>
-            <p className="text-sm text-[#208B59]">⬆ 5.674% <span className="text-gray-600">since last month</span></p>
+            <p className="text-sm text-[#208B59]">+5.674% <span className="text-gray-600">since last month</span></p>
           </div>
         </div>
 
@@ -75,24 +75,22 @@ export default function Analytics() {
             ))}
           </div>
 
-          {/* Total Sale Donut */}
           <div className="bg-white p-4 rounded shadow flex flex-col items-center justify-center">
             <h3 className="font-semibold mb-3">Total Sale</h3>
             <div className="relative w-32 h-32">
-              {/* Outer Circle */}
+
               <div className="absolute inset-0 rounded-full border-[12px] border-gray-300"></div>
-              {/* Green Progress (70%) */}
+
               <div className="absolute inset-0 rounded-full border-[12px] border-[#208B59]" 
-                style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 0 70%)" }}>
+                style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 100% 70%)" }}>
               </div>
-              {/* Text */}
+
               <div className="absolute inset-0 flex items-center justify-center text-xl font-bold text-[#208B59]">
                 70%
               </div>
             </div>
           </div>
 
-          {/* Empty */}
           <div className="bg-white rounded shadow"></div>
 
         </div>
